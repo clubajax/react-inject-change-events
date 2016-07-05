@@ -1,0 +1,13 @@
+{
+	"author": "Mike Wilcox @clubajax",
+	"name": "react-inject-change-events",
+	"main":"index.js",
+	"description": "This plugin allows for injecting other nodeNames into the React ChangeEventPlugin.",
+	"version": "0.0.9",
+	"license": "MIT",
+    "readmeFilename": "README.md",
+	"repository": {
+        "type": "git",
+        "url": "https://github.com/clubajax/react-inject-change-events"
+    }
+}
