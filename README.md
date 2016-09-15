@@ -10,12 +10,19 @@ Built and tested on React 15.1.0
     npm install clubajax/react-inject-change-events --save
     
 ##Usage
+   
+Note that in the usage below, the value is accessed via `event.target.value`. React reuses an internal event and
+does not by default expose the native event. 
     
     import injector from 'react-inject-change-events';
     
     // add all custom elements that have a change event
     injector(['my-custom-drop-down', 'my-custom-input']);
 
+    onChange (event) {
+        value = event.target.value
+    }
+    
     render(
         <my-custom-drop-down onChange={this.onChange}>
             <option value="change">Change</option>
