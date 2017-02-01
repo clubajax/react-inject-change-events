@@ -1,10 +1,10 @@
 'use strict';
-var EventPluginRegistry = require('react/lib/EventPluginRegistry');
-var isTextInputElement = require('react/lib/isTextInputElement');
-var SyntheticEvent = require('react/lib/SyntheticEvent');
-var EventPropagators = require('react/lib/EventPropagators');
-var ReactDOMComponentTree = require('react/lib/ReactDOMComponentTree');
-var EventConstants = require('react/lib/EventConstants');
+var EventPluginRegistry = require('react-dom/lib/EventPluginRegistry');
+var isTextInputElement = require('react-dom/lib/isTextInputElement');
+var SyntheticEvent = require('react-dom/lib/SyntheticEvent');
+var EventPropagators = require('react-dom/lib/EventPropagators');
+var ReactDOMComponentTree = require('react-dom/lib/ReactDOMComponentTree');
+var EventConstants = require('react-dom/lib/EventConstants');
 var topLevelTypes = EventConstants.topLevelTypes;
 var keyOf = require('fbjs/lib/keyOf');
 var eventTypes = {
