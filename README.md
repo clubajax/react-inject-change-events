@@ -1,15 +1,15 @@
-#React Inject Change Events
+# React Inject Change Events
 This plugin allows for injecting other nodeNames into the React ChangeEventPlugin.
 
 In other words, you can finally use onChange in your custom elements and Polymer components.
 
 Built and tested on React 15.1.0
 
-##Install
+## Install
 
     npm install clubajax/react-inject-change-events --save
     
-##Usage
+## Usage
    
 Note that in the usage below, the value is accessed via `event.target.value`. React reuses an internal event and
 does not by default expose the native event. 
@@ -30,8 +30,8 @@ does not by default expose the native event.
         </my-custom-drop-down>
     );
     
-##IMPORTANT NOTE
-This plugin overwrites (copies) much of the functionality of the ChangeEventPlugin, with the exception of
+## IMPORTANT NOTE
+This plugin overwrites (copies) much of the functionality of the `ChangeEventPlugin`, with the exception of
 the < IE 11.0 specic code, since those browsers are deprecated.
 
 This plugin is unofficial, and there is no guarantee that the React team won't render this useless in a future release.
