@@ -28,7 +28,7 @@ function injectChangeEvents (nodeNameArray) {
 }
 
 function shouldUseChangeEvent(elem) {
-    var nodeName = elem.nodeName && elem.nodeName.toLowerCase();
+    var nodeName = elem.localName;
     return acceptedNodeNames[nodeName] || nodeName === 'input' && elem.type === 'file';
 }
 
@@ -36,11 +36,11 @@ function shouldUseClickEvent(elem) {
     // Use the `click` event to detect changes to checkbox and radio inputs.
     // This approach works across all browsers, whereas `change` does not fire
     // until `blur` in IE8.
-    return elem.nodeName && elem.nodeName.toLowerCase() === 'input' && (elem.type === 'checkbox' || elem.type === 'radio');
+    return elem.localName === 'input' && (elem.type === 'checkbox' || elem.type === 'radio');
 }
 
-function getTargetInstForChangeEvent(topLevelType, targetInst) {
-    if (topLevelType === topLevelTypes.topChange) {
+function getTargetInstForChangeEvent(topLevelType, targetInst, targetNode) {
+    if (topLevelType === topLevelTypes.topChange || shouldUseChangeEvent(targetNode)) {
         return targetInst;
     }
 }
@@ -74,7 +74,7 @@ function extractEvents (topLevelType, targetInst, nativeEvent, nativeEventTarget
     }
 
     if (getTargetInstFunc) {
-        var inst = getTargetInstFunc(topLevelType, targetInst);
+        var inst = getTargetInstFunc(topLevelType, targetInst, targetNode);
         if (inst) {
             var event = SyntheticEvent.getPooled(eventTypes.change, inst, nativeEvent, nativeEventTarget);
             event.type = 'change';
