@@ -18,7 +18,8 @@ var eventTypes = {
 };
 
 var acceptedNodeNames = {
-    'select': true
+    select: true,
+	input: true
 };
 
 function injectChangeEvents (nodeNameArray) {
