@@ -64,8 +64,9 @@ function extractEvents (topLevelType, targetInst, nativeEvent, nativeEventTarget
     var targetNode = targetInst ? ReactDOMComponentTree.getNodeFromInstance(targetInst) : window;
 
     var getTargetInstFunc, handleEventFunc;
-    if (shouldUseChangeEvent(targetNode)) {
-        getTargetInstFunc = getTargetInstForChangeEvent;
+    // prevent child elements from emitting events
+    if (shouldUseChangeEvent(targetNode) && shouldUseChangeEvent(nativeEvent.target)) {
+    	getTargetInstFunc = getTargetInstForChangeEvent;
 
     } else if (isTextInputElement(targetNode)) {
         getTargetInstFunc = getTargetInstForInputEvent;
