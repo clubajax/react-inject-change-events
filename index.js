@@ -22,21 +22,6 @@ var acceptedNodeNames = {
 	input: true
 };
 
-var timeout;
-var lastNodeFired;
-function justFired (targetNode) {
-	var result = false;
-  	if(targetNode === lastNodeFired){
-  		result = true;
-	}
-	lastNodeFired = targetNode;
-  	clearTimeout(timeout);
-	timeout = setTimeout(function() {
-		lastNodeFired = null;
-	}, 100);
-	return result;
-}
-
 function injectChangeEvents (nodeNameArray) {
     nodeNameArray.forEach(function (nodeName) {
         acceptedNodeNames[nodeName] = true;
@@ -80,10 +65,8 @@ function extractEvents (topLevelType, targetInst, nativeEvent, nativeEventTarget
 
     var getTargetInstFunc, handleEventFunc;
     // prevent child elements from emitting events
-    if (shouldUseChangeEvent(targetNode) && shouldUseChangeEvent(nativeEvent.target) && nativeEvent.type === 'change') {
-    	if(!justFired(targetNode)){
-    		getTargetInstFunc = getTargetInstForChangeEvent;
-    	}
+	if (shouldUseChangeEvent(targetNode) && shouldUseChangeEvent(nativeEvent.target) && nativeEvent.type !== 'focus' && nativeEvent.type !== 'blur') {
+		getTargetInstFunc = getTargetInstForChangeEvent;
 
     } else if (isTextInputElement(targetNode)) {
         getTargetInstFunc = getTargetInstForInputEvent;
