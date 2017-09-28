@@ -7,7 +7,7 @@ Built and tested on React 15.1.0
 
 ## Install
 
-    npm install clubajax/react-inject-change-events --save
+    npm install @clubajax/react-inject-change-events --save
     
 ## Usage
    
